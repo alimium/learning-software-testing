@@ -1,7 +1,7 @@
 """SQLAlchemy models."""
 
 from ticketer.models.event import Event
-from ticketer.models.order import Order, OrderItem, OrderStatus
+from ticketer.models.order import Order, OrderItem, OrderStatus, TicketType
 from ticketer.models.payment import Payment, PaymentStatus
 from ticketer.models.seat import Seat
 from ticketer.models.user import User
@@ -15,6 +15,7 @@ __all__ = [
     "Order",
     "OrderItem",
     "OrderStatus",
+    "TicketType",
     "Payment",
     "PaymentStatus",
 ]
