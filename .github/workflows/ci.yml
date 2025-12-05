@@ -60,18 +60,22 @@ jobs:
         poetry run ruff check ticketer/ tests/
 
     - name: Run unit tests
+      env:
+        SECRET_KEY: test-secret-key-for-ci
       run: |
         poetry run pytest tests/unit/ -v --cov=ticketer --cov-report=xml --cov-report=term
 
     - name: Run integration tests
       env:
         DATABASE_URL: postgresql://postgres:postgres@localhost:5432/ticketing_test
+        SECRET_KEY: test-secret-key-for-ci
       run: |
         poetry run pytest tests/integration/ -v --cov=ticketer --cov-append --cov-report=xml --cov-report=term
 
     - name: Run API tests
       env:
         DATABASE_URL: postgresql://postgres:postgres@localhost:5432/ticketing_test
+        SECRET_KEY: test-secret-key-for-ci
       run: |
         poetry run pytest tests/api/ -v --cov=ticketer --cov-append --cov-report=xml --cov-report=term
 
