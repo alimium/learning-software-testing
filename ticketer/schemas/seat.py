@@ -23,4 +23,3 @@ class SeatResponse(BaseModel):
     is_reserved: bool
 
     model_config = {"from_attributes": True}
-

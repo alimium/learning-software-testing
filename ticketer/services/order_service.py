@@ -102,7 +102,6 @@ class OrderService:
                         raise ValueError(f"Seat {seat_id} is not available")
 
         # Calculate total and set hold
-        total = self.order_repo.calculate_total(order.id)
         expires_at = datetime.now(timezone.utc) + timedelta(
             minutes=settings.HOLD_EXPIRATION_MINUTES
         )

@@ -25,7 +25,7 @@ class PaymentGateway(Protocol):
 class FakePaymentGateway:
     """
     Fake payment gateway for testing.
-    
+
     Returns success for token 'ok' or 'success', failure otherwise.
     """
 
@@ -48,4 +48,3 @@ class RealPaymentGateway:
         # In real implementation, would call external payment API
         # For now, just simulate success
         return PaymentResult(success=True, transaction_id=f"real_txn_{token[:8]}")
-

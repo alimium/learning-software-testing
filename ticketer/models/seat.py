@@ -10,9 +10,7 @@ class Seat(Base):
     """Seat model for seat-level ticketing."""
 
     __tablename__ = "seats"
-    __table_args__ = (
-        UniqueConstraint("event_id", "seat_label", name="uq_event_seat"),
-    )
+    __table_args__ = (UniqueConstraint("event_id", "seat_label", name="uq_event_seat"),)
 
     id: Mapped[int] = mapped_column(primary_key=True)
     event_id: Mapped[int] = mapped_column(ForeignKey("events.id"), nullable=False)
@@ -23,4 +21,3 @@ class Seat(Base):
 
     def __repr__(self) -> str:
         return f"<Seat(id={self.id}, event_id={self.event_id}, label={self.seat_label})>"
-

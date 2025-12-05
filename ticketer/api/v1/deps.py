@@ -70,4 +70,3 @@ def get_order_service(
         payment_gateway=payment_gateway,
         email_service=email_service,
     )
-

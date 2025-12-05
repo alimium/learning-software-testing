@@ -206,9 +206,7 @@ def create_order(
     try:
         # Convert Pydantic models to dicts
         items = [item.model_dump() for item in order_data.items]
-        order = order_service.create_order_with_hold(
-            user_id=order_data.user_id, items=items
-        )
+        order = order_service.create_order_with_hold(user_id=order_data.user_id, items=items)
         return order
     except ValueError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
@@ -254,4 +252,3 @@ def cancel_order(
         return order
     except ValueError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
-

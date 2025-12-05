@@ -18,4 +18,3 @@ class VenueResponse(BaseModel):
     address: str
 
     model_config = {"from_attributes": True}
-

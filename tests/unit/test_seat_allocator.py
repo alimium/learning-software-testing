@@ -54,4 +54,3 @@ def test_choose_best_seat_scoring():
     # Assert - should prefer row A (highest score)
     assert chosen["id"] == 1
     assert chosen["row"] == "A"
-

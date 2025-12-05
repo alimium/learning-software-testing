@@ -44,4 +44,3 @@ class SQLAlchemyVenueRepository:
     def list_all(self) -> list[Venue]:
         """List all venues."""
         return list(self.db.query(Venue).all())
-

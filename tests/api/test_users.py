@@ -9,7 +9,7 @@ def test_register_user(client):
         "/api/v1/users/register",
         json={"email": "newuser@example.com", "password": "password123"},
     )
-    
+
     assert response.status_code == status.HTTP_201_CREATED
     data = response.json()
     assert data["email"] == "newuser@example.com"
@@ -20,12 +20,12 @@ def test_register_user(client):
 def test_register_duplicate_user(client, create_user):
     """Test that registering with existing email fails."""
     create_user(email="existing@example.com")
-    
+
     response = client.post(
         "/api/v1/users/register",
         json={"email": "existing@example.com", "password": "password123"},
     )
-    
+
     assert response.status_code == status.HTTP_400_BAD_REQUEST
     assert "already exists" in response.json()["detail"]
 
@@ -33,12 +33,12 @@ def test_register_duplicate_user(client, create_user):
 def test_login_user(client, create_user):
     """Test user login via API."""
     create_user(email="login@example.com", password="password123")
-    
+
     response = client.post(
         "/api/v1/users/login",
         json={"email": "login@example.com", "password": "password123"},
     )
-    
+
     assert response.status_code == status.HTTP_200_OK
     data = response.json()
     assert "access_token" in data
@@ -48,12 +48,12 @@ def test_login_user(client, create_user):
 def test_login_wrong_password(client, create_user):
     """Test login fails with wrong password."""
     create_user(email="user@example.com", password="correctpassword")
-    
+
     response = client.post(
         "/api/v1/users/login",
         json={"email": "user@example.com", "password": "wrongpassword"},
     )
-    
+
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
 
@@ -63,6 +63,5 @@ def test_login_nonexistent_user(client):
         "/api/v1/users/login",
         json={"email": "nobody@example.com", "password": "password123"},
     )
-    
-    assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED

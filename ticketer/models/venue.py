@@ -17,4 +17,3 @@ class Venue(Base):
 
     def __repr__(self) -> str:
         return f"<Venue(id={self.id}, name={self.name})>"
-

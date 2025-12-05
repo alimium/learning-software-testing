@@ -20,13 +20,10 @@ class Event(Base):
     start_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     capacity: Mapped[int] = mapped_column(Integer, nullable=False)
     sales_open: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime, default=datetime.utcnow, nullable=False
-    )
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, nullable=False)
 
     # Relationships
     venue: Mapped["Venue"] = relationship("Venue", lazy="joined")
 
     def __repr__(self) -> str:
         return f"<Event(id={self.id}, name={self.name})>"
-

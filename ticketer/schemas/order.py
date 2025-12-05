@@ -54,4 +54,3 @@ class OrderConfirm(BaseModel):
     """Schema for confirming an order."""
 
     payment_token: str
-

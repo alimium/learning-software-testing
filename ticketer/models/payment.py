@@ -30,10 +30,7 @@ class Payment(Base):
         SQLEnum(PaymentStatus), default=PaymentStatus.PENDING, nullable=False
     )
     gateway_ref: Mapped[str | None] = mapped_column(String(255), nullable=True)
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime, default=datetime.utcnow, nullable=False
-    )
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, nullable=False)
 
     def __repr__(self) -> str:
         return f"<Payment(id={self.id}, order_id={self.order_id}, status={self.status})>"
-

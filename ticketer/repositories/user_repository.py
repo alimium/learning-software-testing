@@ -44,4 +44,3 @@ class SQLAlchemyUserRepository:
     def get_by_email(self, email: str) -> User | None:
         """Get user by email."""
         return self.db.query(User).filter(User.email == email).first()
-

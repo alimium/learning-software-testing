@@ -13,4 +13,3 @@ __all__ = [
     "PaymentResult",
     "choose_best_seat",
 ]
-

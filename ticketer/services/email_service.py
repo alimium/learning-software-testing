@@ -14,7 +14,7 @@ class EmailService(Protocol):
 class FakeEmailService:
     """
     Fake email service for testing.
-    
+
     Stores sent emails in a list instead of actually sending them.
     """
 
@@ -43,4 +43,3 @@ class RealEmailService:
         # In real implementation, would send via SMTP
         print(f"Sending email to {to} for order {order_id}")
         return True
-
