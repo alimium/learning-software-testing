@@ -1,5 +1,7 @@
 """Pytest configuration and fixtures."""
 
+import os
+
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
@@ -11,8 +13,11 @@ from ticketer.main import app
 from ticketer.services.email_service import FakeEmailService
 from ticketer.services.payment_gateway import FakePaymentGateway
 
-# Test database URL - use a separate test database
-DATABASE_URL = "postgresql://postgres:postgres@0.0.0.0:5433/ticketing_test"
+# Test database URL - use environment variable with fallback to local test database
+DATABASE_URL = os.environ.get(
+    "TEST_DATABASE_URL",
+    os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@0.0.0.0:5433/ticketing_test"),
+)
 
 
 @pytest.fixture(scope="session")
